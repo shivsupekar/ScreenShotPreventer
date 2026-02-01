@@ -17,7 +17,6 @@ struct ScreenShotPreventerMask: UIViewRepresentable {
         view.isSecureTextEntry = true
         view.text = ""
         view.isUserInteractionEnabled = false
-        view.backgroundColor = .white
         if let autoHideLayer = findAutoHideLayer(view: view) {
             autoHideLayer.backgroundColor = UIColor.white.cgColor
         } else {
@@ -28,7 +27,7 @@ struct ScreenShotPreventerMask: UIViewRepresentable {
     func findAutoHideLayer(view:UIView) -> CALayer? {
         if let layers = view.layer.sublayers {
             if let layer = layers.first(where: { layer in
-                layer.delegate.debugDescription.contains("UITextLayoutCanvasView") ?? false
+                layer.delegate.debugDescription.contains("UITextLayoutCanvasView")
             }){
                 return layer
             }

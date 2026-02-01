@@ -25,17 +25,14 @@ struct HomeScreen: View {
             .navigationTitle("Confidential Data")
             
         }
-        .mask {
-           ScreenShotPreventerMask()
-                .ignoresSafeArea()
-        }
-        .background(
-            ContentUnavailableView(
-                "Not Allowed",
-                image: "iphone.slash",
-                description: Text("Taking screenshots is not allowed for security reasons."))
-        )
         .screenShotPreventerMask(preventScreenshot)
+        .background(
+            ContentUnavailableView {
+                Label("Not Allowed", systemImage: "iphone.slash")
+            } description: {
+                Text("Taking screenshots is not allowed for security reasons.")
+            }
+        )
     }
 }
 extension View {
